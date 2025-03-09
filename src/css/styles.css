@@ -1,0 +1,241 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url('../images/background-2.png'); */
+    /* background-image: url('../images/background-2.png'); */
+    /* Choix entre 2 photos pour le background */
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.background-container {
+    position: fixed;
+    z-index: -1;
+    transition: opacity 5s ease-in-out;
+}
+
+/* Background 1 */
+.background-1 {
+    opacity: 0; /* Initially hidden */
+    z-index: -1;
+}
+
+/* Background 2 */
+.background-2 {
+    opacity: 80%; /* Initially visible */
+    z-index: -2;
+}
+
+/* Header container with flexbox */
+.header-container {
+    display: flex;
+    align-items: center; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Profile picture container */
+.profile-pic-container {
+    margin-right: 20px; 
+}
+
+/* Profile picture styling */
+.profile-pic {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid rgb(255, 196, 0); 
+}
+
+/* Header content styling */
+.header-content {
+    flex-grow: 1; 
+    color: white;
+}
+
+nav {
+    background-color: #555;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 50px 20px;
+    color: white;
+}
+
+h2, p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    border-color: rgb(255, 196, 0);
+    color: rgb(255, 196, 0);
+    background-color:  rgba(0, 0, 0, 0.5);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+
+.social-icon {
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.social-icon .fa-linkedin {
+    transform: scale(1.1);
+}
+
+.list-container {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.list-container {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.traffic-light-box {
+    width: 30px;
+    height: 100px; 
+    background: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px;
+}
+
+.light-cap {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: #555;
+    opacity: 0.3;
+    border: 3px solid rgb(0, 0, 0);
+    position: relative; 
+}
+
+.light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    width: 25px;
+    height: 25px;
+    border: 3px solid black;
+    border-radius: 50%; 
+    background-color:transparent;
+    opacity: 1;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='100%' height='100%'><defs><pattern id='pattern1' viewBox='0 0 10 10' width='10%' height='10%'><circle r='10' fill='none' stroke='black' stroke-width='1'/></pattern></defs><rect width='100%' height='100%' fill='url(%23pattern1)'/></svg>");
+    background-size: cover;
+}
+
+.ongoing .light-cap.green { background-color: #4caf50; opacity: 0.7; } /* 🟢 */
+.delayed .light-cap.orange { background-color: #ff9800; opacity: 0.7; } /* 🟠 */
+.planned .light-cap.red { background-color: #e91809; opacity: 0.7; } /* 🔴 */
+
+.list-item {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 15px;
+    background: #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    gap: 15px; 
+}
+
+.list-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
+.list-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.list-description {
+    font-size: 14px;
+    color: #ffffff;
+    margin-top: 3px;
+}
+
+.list-status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    background:#4caf50;
+}
+
+/* ✅ Couleurs du tag en fonction du statut */
+.ongoing .list-status { background: #4caf50; color: white; } /* 🟢 */
+.delayed .list-status { background: #ff9800; color: white; } /* 🟠 */
+.planned .list-status { background: #e91809; color: white; } /* 🔴 */
