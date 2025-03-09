@@ -125,6 +125,10 @@ h2, p {
     transform: scale(1.1);
 }
 
+.social-icon .fa-linkedin:hover {
+    color: #0077b5;
+}
+
 .list-container {
     max-width: 600px;
     margin: auto;
