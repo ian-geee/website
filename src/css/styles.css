@@ -247,3 +247,26 @@ h2, p {
 .done .list-status { background: #4caf50; color: white; } /* 🟢 */
 .ongoing .list-status { background: #ff9800; color: white; } /* 🟠 */
 .planned .list-status { background: #e91809; color: white; } /* 🔴 */
+
+
+#booksTable th {
+  cursor: pointer;
+  position: relative;
+}
+
+#booksTable th.sortable::after {
+  content: " ↕"; /* flèche neutre */
+  font-size: 0.75rem;
+  color: #999;
+  margin-left: 4px;
+}
+
+#booksTable th.sort-asc::after {
+  content: " 🔼";
+  color: #ffc400; /* or jaune pour se démarquer */
+}
+
+#booksTable th.sort-desc::after {
+  content: " 🔽";
+  color: #ffc400;
+}
