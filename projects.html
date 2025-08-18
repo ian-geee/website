@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <div class="background-container background-1">
+        <img src="src/images/background-1.png">
+    </div>
+    <div class="background-container background-2">
+        <img src="src/images/background-2.png">
+    </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Ian Gee</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Projects</h2>
+            <div class="list-container">
+                <div class="list-item done">
+                    <div class="list-content">
+                        <span class="list-title">This Website and my Resume</span>
+                        <span class="list-description">Via HTML, CSS (flexbox) & a little JS, you can download my Resume via the button in the section above.</span>
+                        <span class="list-status">Done</span>
+                    </div>
+                    <div class="traffic-light-box">
+                        <div class="light-cap red">
+                            <div class="light red"></div>
+                        </div>
+                        <div class="light-cap orange">
+                            <div class="light orange"></div>
+                        </div>
+                        <div class="light-cap green">
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item done">
+                    <div class="list-content">
+                        <span class="list-title">DataCamp Certifications</span>
+                        <span class="list-description">I passed 3 distinct certifications : SQL Associate, Data Scientist Associate in Python & Data Scientist in Python.</span>
+                        <span class="list-status">Done</span>
+                    </div>
+                    <div class="traffic-light-box">
+                        <div class="light-cap red">
+                            <div class="light red"></div>
+                        </div>
+                        <div class="light-cap orange">
+                            <div class="light orange"></div>
+                        </div>
+                        <div class="light-cap green">
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item ongoing">
+                    <div class="list-content">
+                        <span class="list-title">Machine Learning & Deep Learning Mathematics</span>
+                        <span class="list-description">
+                            <!-- Gathering resources on my own has taken a lot of my study time, as it is very hard to find accurate documents on the why's and how's of machine learning algorithms. I want more control over my knowledge. -->
+                            I went through different universities (Grenoble, Leuven, Brussels, Liège, Stanford) programs in data science and built the path to the major data science skills on my own. I have acquired some of the most recurrent books and I am studying them.
+                            You can find the list of books in the <a href="books.html">Books</a> section. You can also find a sample of my transversal notes on some ML algorithms in the <a href="index.html#notes">Notes</a> section to assess the depth of my understanding.
+                        </span>
+                        <span class="list-status">Ongoing</span>
+                    </div>
+                    <div class="traffic-light-box">
+                        <div class="light-cap red">
+                            <div class="light red"></div>
+                        </div>
+                        <div class="light-cap orange">
+                            <div class="light orange"></div>
+                        </div>
+                        <div class="light-cap green">
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item ongoing">
+                    <div class="list-content">
+                        <span class="list-title">Kaggle Projects</span>
+                        <span class="list-description">Data related projects on a well-known data science platform. Ideally, I will link my portfolio to this website.</span>
+                        <span class="list-status">Ongoing</span>
+                    </div>
+                    <div class="traffic-light-box">
+                        <div class="light-cap red">
+                            <div class="light red"></div>
+                        </div>
+                        <div class="light-cap orange">
+                            <div class="light orange"></div>
+                        </div>
+                        <div class="light-cap green">
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item ongoing">
+                    <div class="list-content">
+                        <span class="list-title">Working as a Data Scientist</span>
+                        <span class="list-description">I am interested in many markets : as of now, I prioritize learning opportunities over salary.
+                        </span>
+                        <span class="list-status">Applying</span>
+                    </div>
+                    <div class="traffic-light-box">
+                        <div class="light-cap red">
+                            <div class="light red"></div>
+                        </div>
+                        <div class="light-cap orange">
+                            <div class="light orange"></div>
+                        </div>
+                        <div class="light-cap green">
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/background-switcher.js"></script>
+</body>
+</html>
