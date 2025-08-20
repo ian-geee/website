@@ -134,7 +134,7 @@ h2, p {
 }
 
 .list-container {
-    max-width: 600px;
+    max-width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -154,14 +154,6 @@ h2, p {
 .list-title {
     font-size: 16px;
     font-weight: 600;
-}
-
-.list-container {
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .traffic-light-box {
@@ -201,9 +193,9 @@ h2, p {
     background-size: cover;
 }
 
-.done .light-cap.green { background-color: #4caf50; opacity: 0.7; } /* 🟢 */
-.ongoing .light-cap.orange { background-color: #ff9800; opacity: 0.7; } /* 🟠 */
-.planned .light-cap.red { background-color: #e91809; opacity: 0.7; } /* 🔴 */
+.active .light-cap.green { background-color: #4caf50; opacity: 0.7; } /* 🟢 */
+.priority .light-cap.orange { background-color: #ff9800; opacity: 0.7; } /* 🟠 */
+.inactive .light-cap.red { background-color: #e91809; opacity: 0.7; } /* 🔴 */
 
 .list-item {
     display: flex;
@@ -244,9 +236,9 @@ h2, p {
 }
 
 /* ✅ Couleurs du tag en fonction du statut */
-.done .list-status { background: #4caf50; color: white; } /* 🟢 */
-.ongoing .list-status { background: #ff9800; color: white; } /* 🟠 */
-.planned .list-status { background: #e91809; color: white; } /* 🔴 */
+.active .list-status { background: #4caf50; color: white; } /* 🟢 */
+.priority .list-status { background: #ff9800; color: white; } /* 🟠 */
+.inactive .list-status { background: #e91809; color: white; } /* 🔴 */
 
 
 #booksTable th {
