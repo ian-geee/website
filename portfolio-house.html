@@ -115,7 +115,7 @@
 
       try {
         const data = await fetchJson(API_URL, { method:"POST", body: JSON.stringify(toPayload()) });
-        const price = data.price_eur ?? data.prediction_eur ?? data.price ?? 0; // robust fallback
+        const price = data.price_euro ?? data.prediction_eur ?? data.price ?? 0; // robust fallback
         priceEl.textContent = fmtEUR(price);
         result.style.display = "block";
         statusEl.textContent = "Ok";
