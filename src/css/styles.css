@@ -80,7 +80,7 @@ section {
 }
 
 h1 {
-    color: rgb(255, 196, 0);
+    color: white;
 }
 
 h2, p {
@@ -88,8 +88,12 @@ h2, p {
 }
 
 .container {
+    background:rgba(0, 0, 0, 0.9);
     max-width: 960px;
-    margin: 0 auto;
+    margin-top: 20px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px;
 }
 
 .text-center {
@@ -196,6 +200,10 @@ h2, p {
 .active .light-cap.green { background-color: #4caf50; opacity: 0.7; } /* 🟢 */
 .priority .light-cap.orange { background-color: #ff9800; opacity: 0.7; } /* 🟠 */
 .inactive .light-cap.red { background-color: #e91809; opacity: 0.7; } /* 🔴 */
+
+.active {border: 1px solid #4caf50; /* Vert */}
+.priority {border: 1px solid #ff9800; /* Orange */}
+.inactive {border: 1px solid #e91809; /* Rouge */}
 
 .list-item {
     display: flex;
