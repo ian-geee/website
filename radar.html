@@ -1,71 +1,104 @@
 <!-- ===== Roles Radar (FIFA-style) ===== -->
-<section id="roles" class="py-5">
+<style>
+  .radar-dark{background:#0b0b0e;color:#e9eef2;padding:48px 0}
+  .radar-dark h2{color:#e9eef2}
+  .radar-dark .muted{color:#9aa0a6}
+</style>
+
+<section id="roles" class="py-5 radar-dark">
   <div class="container text-center">
     <h2 class="mb-4">My Roles in a Company</h2>
-    <p class="mb-3" style="color:#9aa0a6">
-      Relative strengths across roles I can play in a team.
-    </p>
+    <p class="mb-3 muted">Relative strengths across roles I can play in a team.</p>
     <div style="max-width:720px;margin:0 auto">
       <canvas id="rolesRadar" aria-label="Radar of roles" role="img"></canvas>
     </div>
   </div>
 </section>
 
-<!-- Chart.js (CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  // --- Plugin: écrit les labels d’anneaux par-dessus les courbes ---
+  const ringLabelsPlugin = {
+    id: 'ringLabels',
+    afterDatasetsDraw(chart, args, opts) {
+      const {ctx, scales: {r}} = chart;
+      const rings = opts.rings || [];
+      ctx.save();
+      ctx.fillStyle = opts.color || '#9aa0a6';
+      ctx.font = (opts.fontSize || 12) + 'px system-ui, -apple-system, Segoe UI, Roboto';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      rings.forEach(({value, label}) => {
+        const rad = (r.getRadiusForValue ? r.getRadiusForValue(value)
+                                         : r.getDistanceFromCenterForValue(value));
+        const x = r.xCenter;
+        const y = r.yCenter - rad; // en haut du cercle
+        ctx.fillText(label, x, y);
+      });
+      ctx.restore();
+    }
+  };
+  Chart.register(ringLabelsPlugin);
+
   const ROLE_LABELS = [
     'Data Scientist',
-    'Data Analyst',
-    'Statistician',
+    'AI/ML Engineer',
+    'Developer',
+    'Process Improvement & QHSE Engineer',
     'Data Engineer',
-    'Python Developer',
-    'Process Improvement Engineer',
-    'Quality & Safety Engineer'
+    'Data Analyst'
   ];
+  const CURRENT = [60,50,30,50,50,60];
+  const GOAL    = [100,100,80,55,80,80];
 
-  // Notes FIFA (0–100) → à ajuster selon ton profil
-  const CURRENT = [85, 80, 78, 70, 82, 62, 58];
-  const GOAL    = [92, 85, 82, 80, 90, 75, 70];
+  // Libellés par anneau
+  const LEVEL_TICKS = { 25:'novice', 50:'junior', 75:'medior', 100:'senior' };
+  const levelFromValue = (v)=> (v<=25?'novice':v<=50?'junior':v<=75?'medior':'senior');
 
   const ctx = document.getElementById('rolesRadar').getContext('2d');
-
   new Chart(ctx, {
     type: 'radar',
     data: {
       labels: ROLE_LABELS,
       datasets: [
-        {
-          label: 'Current',
-          data: CURRENT,
-          fill: true,
-          backgroundColor: 'rgba(96,165,250,0.18)',
-          borderColor: 'rgba(96,165,250,1)',
-          pointBackgroundColor: 'rgba(96,165,250,1)'
-        },
-        {
-          label: 'Goal',
-          data: GOAL,
-          fill: true,
-          backgroundColor: 'rgba(34,197,94,0.14)',
-          borderColor: 'rgba(34,197,94,1)',
-          pointBackgroundColor: 'rgba(34,197,94,1)'
-        }
+        { label:'Current', data: CURRENT, fill:true,
+          backgroundColor:'rgba(96,165,250,0.18)', borderColor:'rgba(96,165,250,1)', pointBackgroundColor:'rgba(96,165,250,1)' },
+        { label:'Goal', data: GOAL, fill:true,
+          backgroundColor:'rgba(34,197,94,0.14)', borderColor:'rgba(34,197,94,1)', pointBackgroundColor:'rgba(34,197,94,1)' }
       ]
     },
     options: {
       scales: {
         r: {
-          angleLines: { color: '#444' },
-          grid: { color: '#2a2f36' },
-          pointLabels: { color: '#e6e7e9', font: { size: 13 } },
-          suggestedMin: 0,
-          suggestedMax: 100,
-          ticks: { showLabelBackdrop: false, color: '#9aa0a6', stepSize: 20 }
+          min:0, max:100,
+          angleLines:{ color:'#3a3f46' },
+          grid:{ color:'#262b31' },
+          pointLabels:{ color:'#e9eef2', font:{ size:13 } },
+          ticks:{
+            stepSize:25,
+            display:false,              // on cache les ticks natifs (dessous)
+            showLabelBackdrop:false
+          }
         }
       },
       plugins: {
-        legend: { labels: { color: '#e6e7e9' } }
+        legend:{ labels:{ color:'#e9eef2' } },
+        tooltip:{
+          backgroundColor:'#111', borderColor:'#444', borderWidth:1,
+          titleColor:'#e9eef2', bodyColor:'#e9eef2',
+          callbacks:{ label:(ctx)=>`${ctx.dataset.label}: ${levelFromValue(ctx.raw)} (${Math.round(ctx.raw)})` }
+        },
+        // Options de notre plugin : valeurs + libellés, couleur, taille de police
+        ringLabels: {
+          rings: [
+            {value:25, label:LEVEL_TICKS[25]},
+            {value:50, label:LEVEL_TICKS[50]},
+            {value:75, label:LEVEL_TICKS[75]},
+            {value:100,label:LEVEL_TICKS[100]}
+          ],
+          color:'#9aa0a6',
+          fontSize:12
+        }
       }
     }
   });
