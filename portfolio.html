@@ -51,81 +51,57 @@
     <div id="navbar"></div>
     <!-- Header Section -->
     <div id="header"></div>    
-  <div class="wrap" id="portfolio-section">
-  <div class="head">
-    <div>
-      <h2>Portfolio · Interactive demos</h2>
+  <div class="container" id="portfolio-section">
+      <h1 class="text-center">Portfolio · Interactive demos</h1>
       <p class="sub">Pick a category or search a keyword. Each card has a live demo and the source code.</p>
+
+
+      <div class="controls" role="toolbar" aria-label="Filters">
+      <div class="buttons" id="filters" aria-label="Categories">
+        <button class="btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="btn" data-filter="data-ml">Data / ML</button>
+        <button class="btn" data-filter="web">Web</button>
+        <button class="btn" data-filter="games">Games</button>
+        <button class="btn" data-filter="tools">Tools</button>
+      </div>
+      <div class="search">
+        <input id="search" type="search" placeholder="Search (e.g., iris, xgboost, fastapi)" aria-label="Search">
+      </div>
     </div>
-  </div>
 
-  <div class="controls" role="toolbar" aria-label="Filters">
-    <div class="buttons" id="filters" aria-label="Categories">
-      <button class="btn" data-filter="all" aria-pressed="true">All</button>
-      <button class="btn" data-filter="data-ml">Data / ML</button>
-      <button class="btn" data-filter="web">Web</button>
-      <button class="btn" data-filter="games">Games</button>
-      <button class="btn" data-filter="tools">Tools</button>
-    </div>
-    <div class="search">
-      <input id="search" type="search" placeholder="Search (e.g., iris, xgboost, fastapi)" aria-label="Search">
-    </div>
-  </div>
+    <div class="grid" id="cards">
+      <!-- EXAMPLE 1: Iris Classifier (live) -->
+      <article class="card" data-tags="data-ml iris sklearn fastapi" data-text="iris classifier flowers logistic regression fastapi demo" tabindex="0">
+        <span class="pill">Live</span>
+        <h3>🌸 Iris Classifier</h3>
+        <p>Predict the iris flower class (setosa/versicolor/virginica) from measurements.</p>
+        <div class="tags">
+          <span class="tag">FastAPI</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Pipeline</span>
+        </div>
+        <div class="actions">
+          <a class="link primary" href="/portfolio-iris.html">View demo</a>
+          <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API code</a>
+        </div>
+      </article>
 
-  <div class="grid" id="cards">
-    <!-- EXAMPLE 1: Iris Classifier (live) -->
-    <article class="card" data-tags="data-ml iris sklearn fastapi" data-text="iris classifier flowers logistic regression fastapi demo" tabindex="0">
-      <span class="pill">Live</span>
-      <h3>🌸 Iris Classifier</h3>
-      <p>Mini app: 4 measurements → prediction (setosa/versicolor/virginica). FastAPI API + scikit-learn model.</p>
-      <div class="tags">
-        <span class="tag">FastAPI</span>
-        <span class="tag">scikit-learn</span>
-        <span class="tag">Pipeline</span>
-      </div>
-      <div class="actions">
-        <a class="link primary" href="/portfolio-iris.html">View demo</a>
-        <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API code</a>
-      </div>
-      <div class="meta">Challenge → Solution → Impact: <em>Educational demo, static front + PaaS API</em></div>
-    </article>
-
-    <!-- EXAMPLE 2: (placeholder) House Price Estimator -->
-    <article class="card" data-tags="data-ml regression xgboost" data-text="house price regression xgboost features demo" tabindex="0">
-      <span class="pill">Live</span>
-      <h3>🏡 House Price Estimator</h3>
-      <p>Estimate a house price from a few variables (area, bedrooms, ...).</p>
-      <div class="tags">
-        <span class="tag">XGBoost</span>
-        <span class="tag">Pydantic</span>
-        <span class="tag">CI/CD</span>
-      </div>
-      <div class="actions">
-        <a class="link primary" href="/portfolio-house.html">View demo</a>
-        <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API Code</a>
-      </div>
-      <div class="meta">Teaser to showcase the roadmap and product mindset.</div>
-    </article>
-
-    <!-- EXAMPLE 3: (placeholder) Tiny Web Game
-    <article class="card" data-tags="games web" data-text="mini game canvas vanilla js" tabindex="0">
-      <span class="pill">Demo</span>
-      <h3>🕹️ Tiny Web Game</h3>
-      <p>Small vanilla JS/HTML canvas game. Focus on simple, responsive UX.</p>
-      <div class="tags">
-        <span class="tag">Vanilla JS</span>
-        <span class="tag">HTML Canvas</span>
-      </div>
-      <div class="actions">
-        <a class="link" aria-disabled="true" href="#">Play</a>
-        <a class="link" aria-disabled="true" href="#">Code</a>
-      </div>
-      <div class="meta">Highlights UI, accessibility, and input handling.</div>
-    </article>
-  </div>
-</div> -->
-
-
+      <!-- EXAMPLE 2: (placeholder) House Price Estimator -->
+      <article class="card" data-tags="data-ml regression xgboost" data-text="house price regression xgboost features demo" tabindex="0">
+        <span class="pill">Live</span>
+        <h3>🏡 House Price Estimator</h3>
+        <p>Estimate a house price from a few variables (area, bedrooms, ...).</p>
+        <div class="tags">
+          <span class="tag">XGBoost</span>
+          <span class="tag">Pydantic</span>
+          <span class="tag">CI/CD</span>
+        </div>
+        <div class="actions">
+          <a class="link primary" href="/portfolio-house.html">View demo</a>
+          <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API Code</a>
+        </div>
+      </article>
+  </div>    
   <script>
     // --- Filtrage & recherche ---
     const buttons = document.querySelectorAll('#filters .btn');
