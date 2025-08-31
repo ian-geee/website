@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="src/css/styles.css">
   <style>
     :root { --bg:#0b0b0e; --card:#141419; --muted:#9aa1a9; --text:#e9eef2; --accent:#6ea8fe; --ok:#22c55e; --err:#ef4444; }
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Roboto,Ubuntu,sans-serif}
+    *{box-sizing:border-box} 
+    /* body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Roboto,Ubuntu,sans-serif} */
     .wrap{max-width:860px;margin:40px auto;padding:0 16px}
     .card{background:var(--card);border:1px solid #1f2430;border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    h1{font-size:28px;margin:0 0 10px} p.subtitle{margin:0 0 18px;color:var(--muted)}
+    /* h1{font-size:28px;margin:0 0 10px} p.subtitle{margin:0 0 18px;color:var(--muted)} */
     form .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
     label{display:block;font-size:14px;margin:6px 0 6px;color:var(--muted)}
     input{width:100%;padding:10px 12px;border:1px solid #2a3242;background:#0f1116;color:var(--text);border-radius:10px}
@@ -115,7 +116,7 @@
 
       try {
         const data = await fetchJson(API_URL, { method:"POST", body: JSON.stringify(toPayload()) });
-        const price = data.price_euro ?? data.prediction_eur ?? data.price ?? 0; // robust fallback
+        const price = data.price_euro ?? data.prediction_eur ?? data.price ?? 0; // robust fallback - not so robust : it was returning zero because 'data.price_euro' was missing
         priceEl.textContent = fmtEUR(price);
         result.style.display = "block";
         statusEl.textContent = "Ok";
