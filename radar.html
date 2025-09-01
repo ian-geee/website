@@ -1,72 +1,19 @@
 <!-- ===== Roles Radar (FIFA-style) ===== -->
-<section id="roles" class="py-5">
+<style>
+  .radar-dark{background:#0b0b0e;color:#e9eef2;padding:48px 0}
+  .radar-dark h2{color:#e9eef2}
+  .radar-dark .muted{color:#9aa0a6}
+</style>
+
+<section id="roles" class="py-5 radar-dark">
   <div class="container text-center">
     <h2 class="mb-4">My Roles in a Company</h2>
-    <p class="mb-3" style="color:#9aa0a6">
-      Relative strengths across roles I can play in a team.
-    </p>
+    <p class="mb-3 muted">Relative strengths across roles I can play in a team.</p>
     <div style="max-width:720px;margin:0 auto">
       <canvas id="rolesRadar" aria-label="Radar of roles" role="img"></canvas>
     </div>
   </div>
 </section>
 
-<!-- Chart.js (CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const ROLE_LABELS = [
-    'Data Scientist',
-    'Data Analyst',
-    'Statistician',
-    'Data Engineer',
-    'Python Developer',
-    'Process Improvement Engineer',
-    'Quality & Safety Engineer'
-  ];
-
-  // Notes FIFA (0–100) → à ajuster selon ton profil
-  const CURRENT = [85, 80, 78, 70, 82, 62, 58];
-  const GOAL    = [92, 85, 82, 80, 90, 75, 70];
-
-  const ctx = document.getElementById('rolesRadar').getContext('2d');
-
-  new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ROLE_LABELS,
-      datasets: [
-        {
-          label: 'Current',
-          data: CURRENT,
-          fill: true,
-          backgroundColor: 'rgba(96,165,250,0.18)',
-          borderColor: 'rgba(96,165,250,1)',
-          pointBackgroundColor: 'rgba(96,165,250,1)'
-        },
-        {
-          label: 'Goal',
-          data: GOAL,
-          fill: true,
-          backgroundColor: 'rgba(34,197,94,0.14)',
-          borderColor: 'rgba(34,197,94,1)',
-          pointBackgroundColor: 'rgba(34,197,94,1)'
-        }
-      ]
-    },
-    options: {
-      scales: {
-        r: {
-          angleLines: { color: '#444' },
-          grid: { color: '#2a2f36' },
-          pointLabels: { color: '#e6e7e9', font: { size: 13 } },
-          suggestedMin: 0,
-          suggestedMax: 100,
-          ticks: { showLabelBackdrop: false, color: '#9aa0a6', stepSize: 20 }
-        }
-      },
-      plugins: {
-        legend: { labels: { color: '#e6e7e9' } }
-      }
-    }
-  });
-</script>
+<script src="src/js/radar.js"></script>
