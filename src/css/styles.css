@@ -270,3 +270,7 @@ h2, p {
   content: " 🔽";
   color: #ffc400;
 }
+
+.radar-dark{background:#0b0b0e;color:#e9eef2}
+.radar-dark h2{color:#e9eef2}
+.radar-dark .muted{color:#9aa0a6}
