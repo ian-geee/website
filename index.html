@@ -8,63 +8,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/cardgrid.css">
 </head>
 <body>
     <div id="background"></div>
     <!-- Navigation -->
-    <div id="navbar"></div>
+    
     <!-- Header Section -->
     <div id="header"></div>
+    <div id="navbar"></div>
 
-    <!-- About Section -->
-    <section id="about" class="container">
-        <!-- <div class="container"> -->
-            <h1 class="text-center mb-4" style="color: white;">About Me</h1>
-            <p>Hello and welcome 👋</p>
-            <p>Passionate about numbers, data science and technological innovation, I transitioned from biochemical engineering to data science to build solutions that have measurable impact.</p>
-            <p>I enjoy solving problems, exploring data, and transforming insights into models and tools that help decision-making.</p>
-            <p style="color: rgb(255, 196, 0)">Currently open to junior roles in <b>Data Science - Machine/Deep Learning</b> or medior positions as <b>Data Analyst</b>. Fast learner, self-taught, and motivated to grow quickly in a team environment.</p>
-            <p>Looking forward to hearing from you,</p>
-            <p>Julian</p>
 
-            <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/ian-gee/" target="_blank">LinkedIn</a> !</p>
+    <div class="container" id="portfolio-section">
+            <h1 class="text-center">Portfolio · Interactive demos</h1>
+            <p class="sub">Pick a category or search a keyword. Each card has a live demo and the source code.</p>
 
-            <div id="resume" class="text-center">
-            <h2 class="mb-4">Download my Resume</h2>
-            <a href="src/static/resume.pdf" class="btn btn-lg" download>
-                <i class="fas fa-download"></i> Download Resume</a>
+
+            <div class="controls" role="toolbar" aria-label="Filters">
+            <div class="buttons" id="filters" aria-label="Categories">
+                <button class="btn" data-filter="all" aria-pressed="true">All</button>
+                <button class="btn" data-filter="data-ml">Data / ML</button>
+                <button class="btn" data-filter="web">Web</button>
+                <button class="btn" data-filter="games">Games</button>
+                <button class="btn" data-filter="tools">Tools</button>
+            </div>
+            <div class="search">
+                <input id="search" type="search" placeholder="Search (e.g., iris, xgboost, fastapi)" aria-label="Search">
+            </div>
             </div>
 
-            <div id="notes" class="text-center" style="margin-top: 30px;">
-            <h2 class="mb-4">Download a sample of my ML hand-written notes</h2>
-            <a href="src/static/notess.pdf" class="btn btn-lg" download>
-                <i class="fas fa-download"></i> Download Notes</a>
-            </div>
-        <!-- </div> -->
-    </section>
+            <div class="grid" id="cards">
+            <!-- EXAMPLE 1: Iris Classifier (live) -->
+            <article class="card" data-tags="data-ml iris sklearn fastapi" data-text="iris classifier flowers logistic regression fastapi demo" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🌸 Iris Classifier</h3>
+                <p>Predict the iris flower class (setosa/versicolor/virginica) from measurements.</p>
+                <div class="tags">
+                <span class="tag">FastAPI</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Pipeline</span>
+                </div>
+                <div class="actions">
+                <a class="link primary" href="./portfolio-iris.html">View demo</a>
+                <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API code</a>
+                </div>
+            </article>
 
-    <div class="moon"></div>
+            <!-- EXAMPLE 2: (placeholder) House Price Estimator -->
+            <article class="card" data-tags="data-ml regression xgboost" data-text="house price regression xgboost features demo" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🏡 House Price Estimator</h3>
+                <p>Estimate a house price from a few variables (area, bedrooms, ...).</p>
+                <div class="tags">
+                <span class="tag">XGBoost</span>
+                <span class="tag">Pydantic</span>
+                <span class="tag">CI/CD</span>
+                </div>
+                <div class="actions">
+                <a class="link primary" href="./portfolio-house.html">View demo</a>
+                <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">API Code</a>
+                </div>
+            </article>
+            </div>    
+        </div>    
 
-    <section id="roles" class="container radar-dark">
-        <h2 class="mb-4">My Roles in a Company</h2>
-        <p class="mb-3 muted">Relative strengths across roles I can play in a team.</p>
-        <div style="max-width:720px;margin:0 auto">
-        <canvas id="rolesRadar" aria-label="Radar of roles" role="img"></canvas>
-        </div>
-    </section>
 
-    <!-- Presentation Video Section -->
-    <section id="video" class="container text-center">
-        <!-- <div class="container"> -->
-            <h2 class="text-center mb-4">Presentation Video</h2>
-            <p>In construction</p>
-        <!-- </div> -->
-    </section>
+    
+        
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/includes-manager.js"></script>
     <script src="src/js/background-switcher.js"></script> <!-- A exécuter après l'insertion des backgrounds :dumb_face: -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="src/js/radar.js"></script>
+    <script src="src/js/short-radar.js"></script>
+
 </body>
 </html>
