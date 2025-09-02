@@ -58,8 +58,8 @@ body {
 
 /* Profile picture styling */
 .profile-pic {
-    width: 150px; 
-    height: 150px; 
+    width: 220px; 
+    height: 220px; 
     border-radius: 50%; 
     object-fit: cover; 
     border: 3px solid rgb(255, 196, 0); 

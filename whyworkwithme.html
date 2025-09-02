@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julian's Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/cardgrid.css">
+</head>
+<body>
+    <div id="background"></div>
+    <!-- Navigation -->
+    
+    <!-- Header Section -->
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <!-- Presentation Video Section -->
+    <div id="video" class="container text-center">
+            <h2 class="text-center mb-4">Presentation Video</h2>
+            <p>In construction</p>
+    </div>
+
+    <div id="fullRolesRadar" class="container">
+        <h1 class="text-center mb-4" style="color: white;">My Roles in a Company</h1>
+        <p class="mb-3 muted">When you hire me, you get a package of different skills. From an employer's perspective, this means greater flexibility and adaptability ; very useful when you need to fill multiple roles within a project or if an employee leaves due to unforeseen circumstances.</p>
+        <p class="mb-3 muted"></p>
+        <p class="mb-3 muted">I can switch from one hat to another, or even stack hats, making sure the company stays competitive.</p>
+        <div style="max-width:720px;margin:0 auto">
+        <canvas id="rolesRadarFull" aria-label="Radar of roles" role="img"></canvas>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/includes-manager.js"></script>
+    <script src="src/js/background-switcher.js"></script> <!-- A exécuter après l'insertion des backgrounds :dumb_face: -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="src/js/short-radar.js"></script>
+    <script src="src/js/full-radar.js"></script>
+
+</body>
+</html>

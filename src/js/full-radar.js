@@ -35,7 +35,7 @@
   let chart;
 
   function mountRadar() {
-    const el = document.getElementById('rolesRadar');
+    const el = document.getElementById('rolesRadarFull');
     if (!el || !window.Chart) return false;        // ⟵ canvas pas là encore
     if (chart) { try { chart.destroy(); } catch(e){} }
 
@@ -49,8 +49,8 @@
           { label:'Past: 2022', data: YEAR_2022, fill:true,
             backgroundColor:'rgba(230,145,156,0.18)', borderColor:'rgba(230,145,156,1)', pointBackgroundColor:'rgba(230,145,156,1)' },
           { label:'Current: 2025', data: CURRENT, fill:true,
-            backgroundColor:'rgba(96,165,250,0.18)', borderColor:'rgba(96,165,250,1)', pointBackgroundColor:'rgba(96,165,250,1)' },
-          { label:'Goal: 2035', data: GOAL, fill:true,
+            backgroundColor:'rgba(255,196,0,0.18)', borderColor:'rgba(255,196,0,1)', pointBackgroundColor:'rgba(255,196,0,1)' },
+          { label:'Goal: 2030', data: GOAL, fill:true,
             backgroundColor:'rgba(34,197,94,0.14)', borderColor:'rgba(34,197,94,1)', pointBackgroundColor:'rgba(34,197,94,1)' }
         ]
       },

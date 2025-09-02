@@ -44,7 +44,7 @@
   let chart;
 
   function mountRadar() {
-    const el = document.getElementById('rolesRadar');
+    const el = document.getElementById('rolesRadarShort');
     if (!el || !window.Chart) return false;        // ⟵ canvas pas là encore
     if (chart) { try { chart.destroy(); } catch(e){} }
 

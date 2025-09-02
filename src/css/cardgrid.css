@@ -133,4 +133,5 @@
     border: 1px solid var(--border);
     background: #0f1116;
     color: var(--text);
-    border-radius:
+    border-radius: 10px;
+}
