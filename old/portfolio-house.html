@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Price Estimator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="src/css/styles.css">
+  <style>
+    :root { --bg:#0b0b0e; --card:#141419; --muted:#9aa1a9; --text:#e9eef2; --accent:#6ea8fe; --ok:#22c55e; --err:#ef4444; }
+    *{box-sizing:border-box} 
+    /* body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Roboto,Ubuntu,sans-serif} */
+    .wrap{max-width:860px;margin:40px auto;padding:0 16px}
+    .card{background:var(--card);border:1px solid #1f2430;border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    /* h1{font-size:28px;margin:0 0 10px} p.subtitle{margin:0 0 18px;color:var(--muted)} */
+    form .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    label{display:block;font-size:14px;margin:6px 0 6px;color:var(--muted)}
+    input{width:100%;padding:10px 12px;border:1px solid #2a3242;background:#0f1116;color:var(--text);border-radius:10px}
+    button{margin-top:14px;padding:12px 16px;border:0;border-radius:12px;background:var(--accent);color:#0b0b0e;font-weight:600;cursor:pointer}
+    button[disabled]{opacity:.6;cursor:not-allowed}
+    .status{margin-left:10px;color:var(--muted)}
+    .result{margin-top:16px}
+    .price{font-size:28px;font-weight:800}
+    .muted{color:var(--muted)}
+    .footer{margin-top:14px;font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div id="background"></div>
+  <div id="navbar"></div>
+  <div id="header"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>House Price Estimator 🏡</h1>
+      <p class="subtitle muted">Enter a few features and submit to get an estimated price (Belgium, EUR).</p>
+
+      <form id="f" novalidate>
+        <div class="grid">
+          <div>
+            <label for="habitable_surface">Habitable area (m²)</label>
+            <input id="habitable_surface" type="number" step="1" min="30" max="600" required placeholder="120">
+          </div>
+          <div>
+            <label for="bedrooms_count">Bedrooms</label>
+            <input id="bedrooms_count" type="number" step="1" min="1" max="8" required placeholder="3">
+          </div>
+          <div>
+            <label for="post_code">Postal code (4 digits)</label>
+            <input id="post_code" type="text" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" required placeholder="1070" title="4 digits (e.g., 1070)">
+          </div>
+          <div>
+            <label for="num_facade">Facades (1–4)</label>
+            <input id="num_facade" type="number" step="1" min="1" max="4" required placeholder="2">
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px">
+          <button id="btn" type="submit">PREDICT</button>
+          <span id="status" class="status"></span>
+        </div>
+      </form>
+
+      <div id="result" class="result" style="display:none">
+        <div class="price" id="price">—</div>
+        <div class="muted">Educational estimate (EUR).</div>
+      </div>
+
+      <div class="footer">
+        API: FastAPI · Model: scikit-learn (HistGBR, log1p) · Features: habitable_surface, bedrooms_count, post_code, num_facade
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://ml-api-nebk.onrender.com/api/v1/house/predict";
+
+    const form = document.getElementById("f");
+    const btn = document.getElementById("btn");
+    const statusEl = document.getElementById("status");
+    const result = document.getElementById("result");
+    const priceEl = document.getElementById("price");
+
+    function toPayload(){
+      return {
+        habitable_surface: parseFloat(document.getElementById("habitable_surface").value),
+        bedrooms_count:    parseInt(document.getElementById("bedrooms_count").value, 10),
+        post_code:         String(document.getElementById("post_code").value).trim(),
+        num_facade:        parseInt(document.getElementById("num_facade").value, 10),
+      };
+    }
+
+    function fmtEUR(n){
+      try {
+        return new Intl.NumberFormat('fr-BE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+      } catch {
+        return `${Math.round(n).toLocaleString('fr-BE')} €`;
+      }
+    }
+
+    async function fetchJson(url, opts={}){
+      const res = await fetch(url, { ...opts, headers: {'Content-Type':'application/json', ...(opts.headers||{}) }});
+      if(!res.ok){
+        const err = await res.json().catch(()=>({detail:`HTTP ${res.status}`}));
+        throw new Error(err.detail || `HTTP ${res.status}`);
+      }
+      return res.json();
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      statusEl.textContent = "Predicting...";
+      result.style.display = "none";
+
+      try {
+        const data = await fetchJson(API_URL, { method:"POST", body: JSON.stringify(toPayload()) });
+        const price = data.price_euro ?? data.prediction_eur ?? data.price ?? 0; // robust fallback - not so robust : it was returning zero because 'data.price_euro' was missing
+        priceEl.textContent = fmtEUR(price);
+        result.style.display = "block";
+        statusEl.textContent = "Ok";
+      } catch (err){
+        statusEl.textContent = "Error: " + err.message;
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/includes-manager.js"></script>
+  <script src="src/js/background-switcher.js"></script>
+</body>
+</html>
