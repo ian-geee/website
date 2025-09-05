@@ -15,8 +15,12 @@ function toPayload(){
     };
 }
 
-function formatResult(n) {
-    return `${Number(n.toFixed(1))} / 10`;
+// Car on passe d'une échelle 3->8 vers 0->10
+function formatResultMinMax(n, minLabel = 3, maxLabel = 8) {
+  const clamped = Math.max(minLabel, Math.min(n, maxLabel));
+  const scaled = ((clamped - minLabel) / (maxLabel - minLabel)) * 10; // 3..8 → 0..10
+  return `${Number(scaled.toFixed(1)).toLocaleString('fr-BE', 
+           {minimumFractionDigits:1, maximumFractionDigits:1})} / 10`;
 }
 
 async function fetchJson(url, opts={}){
@@ -37,7 +41,7 @@ form.addEventListener("submit", async (e) => {
     try {
     const data = await fetchJson(API_URL, { method:"POST", body: JSON.stringify(toPayload()) });
     const quality = data.quality ?? 0; // robust fallback - not so robust : it was returning zero because 'data.price_euro' was missing
-    qualityEl.textContent = formatResult(quality);
+    qualityEl.textContent = formatResultMinMax(quality);
     result.style.display = "block";
     statusEl.textContent = "Ok";
     } catch (err){
