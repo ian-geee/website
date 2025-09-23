@@ -27,7 +27,7 @@
     'Process Improvement & QHSE Engineer','Data Engineer','Business Intelligence / Data Analyst'
   ];
   const YEAR_2022 = [20, 1, 20, 50, 1, 40];
-  const CURRENT   = [60,40,40,60,40,70];
+  const CURRENT   = [60,50,50,60,40,70];
   const GOAL      = [100,100,80,65,70,80];
   const LEVEL_TICKS = {25:'novice',50:'junior',75:'medior',100:'senior'};
   const levelFromValue = v => (v<25?'blue-sky':v<50?'novice':v<75?'junior':'medior');
