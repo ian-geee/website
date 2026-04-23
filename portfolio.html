@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julian G. · Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/cardgrid.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <div class="page-layout">
+
+        <!-- ── Sidebar : bio EN + radar ── -->
+        <aside class="sidebar">
+            <h2>About me</h2>
+            <p >Currently open to medior roles in <strong>Data Science — Machine/Deep Learning</strong> or medior positions as <strong>Data Analyst</strong>. Fast learner, self-taught, and motivated to grow quickly in a team environment.</p>
+            <p>My first experience with data was a three-month internship at Puratos as a Process Improvement Engineer trainee, where I conducted data analysis to support Lean optimization of raw-material transport streams, contributing to annual savings of about &euro;150,000.</p>
+            <p>I then completed a six-week BeCode program as a Data/AI Engineer trainee, strengthening my foundations for end-to-end data work.</p>
+            <p>I next managed equipment and associated data at CHU de Liège as a Biomedical Engineer: I administered the CMMS database, performed data analysis, cleaning and visualization, and built a Python data pipeline that automated monthly reports to help executives in their decision-making processes.</p>
+            <p>After this role, to deepen my expertise and switch to a career in data, I pursued intensive self-learning (on Datacamp, Coursera, Stanford Online) in Python, statistics, machine learning, and Azure, focusing on data exploration, feature engineering, model fitting/validation, and MLOps.</p>
+
+            <p>This reorientation work paid off: I passed the technical assessments at <strong>Troople</strong>, where I had the opportunity to develop AI solutions addressing real business problems on live projects.</p>
+
+            <p>A brief health-related period (2018&ndash;2021) limited my ability to drive and to work in large industrial environments; I kept on fighting and continued upskilling, and I am fully operational today.</p>
+
+            <h2 style="margin-top:1.25rem;">My roles in a company</h2>
+            <p>When you hire me, you get a package of different skills. From an employer's perspective, this means greater flexibility and adaptability; very useful when you need to fill multiple roles within a project or if an employee leaves due to unforeseen circumstances.</p>
+            <p>I can switch from one hat to another, or even stack hats, making sure the company stays competitive.</p>
+
+            <div class="radar-container">
+                <canvas id="rolesRadarFull" aria-label="Radar of roles" role="img"></canvas>
+            </div>
+
+            <a href="src/static/resume.pdf" class="btn" style="margin-top:1.25rem; width:100%;" download>
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+            <a href="contact.html" class="sidebar-link">Get in touch →</a>
+        </aside>
+
+        <!-- ── Contenu principal : cartes projets ── -->
+        <main class="page-main">
+            <h1>Portfolio · Interactive demos</h1>
+            <p class="sub">Pick a category or search a keyword. Each card has a live demo and the source code.</p>
+
+            <div class="controls" role="toolbar" aria-label="Filters">
+                <div class="buttons" id="filters" aria-label="Categories">
+                    <button class="btn" data-filter="all" aria-pressed="true">All</button>
+                    <button class="btn" data-filter="data-ml">Data / ML</button>
+                    <button class="btn" data-filter="web">Web</button>
+                    <button class="btn" data-filter="games">Games</button>
+                    <button class="btn" data-filter="tools">Tools</button>
+                </div>
+                <div class="search">
+                    <input id="search" type="search" placeholder="Search (e.g., iris, xgboost, fastapi)" aria-label="Search">
+                </div>
+            </div>
+
+            <div class="grid" id="cards">
+                <article class="card" data-tags="data-ml iris sklearn fastapi" data-text="iris classifier flowers logistic regression fastapi demo" tabindex="0">
+                    <span class="pill">Live</span>
+                    <h3>🌸 Iris Classifier</h3>
+                    <p>Predict the iris flower class (setosa/versicolor/virginica) from measurements.</p>
+                    <div class="tags">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">Log Reg</span>
+                    </div>
+                    <div class="actions">
+                        <a class="link primary" href="./portfolio-iris.html">View demo</a>
+                        <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="data-ml regression xgboost" data-text="house price regression xgboost features demo" tabindex="0">
+                    <span class="pill">Live</span>
+                    <h3>🏡 House Price Estimator</h3>
+                    <p>Estimate a house price from a few variables (area, bedrooms, ...).</p>
+                    <div class="tags">
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">Pydantic</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                    <div class="actions">
+                        <a class="link primary" href="./portfolio-house.html">View demo</a>
+                        <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="data-ml regression gbregressor" data-text="wine quality regression gbregressor features demo" tabindex="0">
+                    <span class="pill">Live</span>
+                    <h3>🍷 Wine Quality Estimator</h3>
+                    <p>Estimate a red wine quality from a few chemical properties.</p>
+                    <div class="tags">
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">GBRegressor</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                    <div class="actions">
+                        <a class="link primary" href="./portfolio-wine.html">View demo</a>
+                        <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="web" data-text="web demo python javascript" tabindex="0">
+                    <span class="pill">Live</span>
+                    <h3>🛜 This website</h3>
+                    <p>This website is maintained by me, built step by step, from scratch.</p>
+                    <div class="tags">
+                        <span class="tag">web</span>
+                        <span class="tag">python</span>
+                        <span class="tag">javascript</span>
+                    </div>
+                    <div class="actions"></div>
+                </article>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/includes-manager-portfolio.js"></script>
+    <script src="src/js/background-switcher.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="src/js/full-radar.js"></script>
+    <script src="src/js/portfolio-searchbar.js"></script>
+</body>
+</html>

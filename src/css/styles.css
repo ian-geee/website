@@ -187,5 +187,98 @@ h2, p {
 /* remplace ce que tu avais avant sur .header-radar */
 .header-radar{
   width: 300px;
-  height: 250px;        /* carré 250x250 */
+  height: 250px;
+}
+
+.video-placeholder {
+    width: 300px;
+    height: 250px;
+    border: 2px dashed rgba(255, 196, 0, 0.4);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9aa0a6;
+    font-size: 0.85rem;
+    text-align: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.video-placeholder i {
+    font-size: 2rem;
+    color: rgba(255, 196, 0, 0.5);
+}
+
+/* ── Layout deux colonnes (sidebar + contenu principal) ── */
+.page-layout {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    max-width: 1600px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.sidebar {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 196, 0, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.sidebar h2 {
+    color: rgb(255, 196, 0);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar p, .sidebar li {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.sidebar ul {
+    padding-left: 1.1rem;
+    margin-bottom: 0;
+}
+
+.sidebar .radar-container {
+    margin-top: 1.25rem;
+    height: 420px;
+}
+
+.sidebar .sidebar-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: rgb(255, 196, 0);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.sidebar .sidebar-link:hover {
+    text-decoration: underline;
+}
+
+.page-main {
+    min-width: 0; /* empêche le débordement dans la grille */
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 196, 0, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
 }
