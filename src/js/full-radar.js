@@ -23,11 +23,15 @@
   };
 
   const ROLE_LABELS = [
-    'Data Scientist','AI/ML Engineer','Full Stack / Cloud Developer',
-    'Process Improvement & QHSE Engineer','Data Engineer','Business Intelligence / Data Analyst'
+    'Data Scientist',
+    'AI/ML Engineer',
+    ['Full Stack', '/ Python Developer'],
+    ['Process Improvement', '& QHSE Engineer'],
+    'Data Engineer',
+    ['Business Intelligence', '/ Data Analyst']
   ];
   const YEAR_2022 = [20, 1, 20, 50, 1, 40];
-  const CURRENT   = [60,50,50,60,40,70];
+  const CURRENT   = [60,70,60,60,50,70];
   const GOAL      = [100,100,80,65,70,80];
   const LEVEL_TICKS = {25:'novice',50:'junior',75:'medior',100:'senior'};
   const levelFromValue = v => (v<25?'blue-sky':v<50?'novice':v<75?'junior':'medior');
@@ -48,7 +52,7 @@
         datasets: [
           { label:'Past: 2022', data: YEAR_2022, fill:true,
             backgroundColor:'rgba(230,145,156,0.18)', borderColor:'rgba(230,145,156,1)', pointBackgroundColor:'rgba(230,145,156,1)' },
-          { label:'Current: 2025', data: CURRENT, fill:true,
+          { label:'Current: 2026', data: CURRENT, fill:true,
             backgroundColor:'rgba(255,196,0,0.18)', borderColor:'rgba(255,196,0,1)', pointBackgroundColor:'rgba(255,196,0,1)' },
           { label:'Goal: 2030', data: GOAL, fill:true,
             backgroundColor:'rgba(34,197,94,0.14)', borderColor:'rgba(34,197,94,1)', pointBackgroundColor:'rgba(34,197,94,1)' }
@@ -59,7 +63,7 @@
         scales:{ r:{
           min:0, max:100,
           angleLines:{ color:'#3a3f46' }, grid:{ color:'#262b31' },
-          pointLabels:{ color:'#e9eef2', font:{ size:13 } },
+          pointLabels:{ color:'#e9eef2', font:{ size:11 } },
           ticks:{ stepSize:25, display:false, showLabelBackdrop:false }
         }},
         plugins:{
