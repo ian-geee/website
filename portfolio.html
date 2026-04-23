@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julian G. · Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/cardgrid.css">
+</head>
+<body>
+    <div id="background"></div>
+    <!-- Navigation -->
+    
+    <!-- Header Section -->
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+
+    <div class="container" id="portfolio-section">
+            <h1 class="text-center">Portfolio · Interactive demos</h1>
+            <p class="sub">Pick a category or search a keyword. Each card has a live demo and the source code.</p>
+
+
+            <div class="controls" role="toolbar" aria-label="Filters">
+            <div class="buttons" id="filters" aria-label="Categories">
+                <button class="btn" data-filter="all" aria-pressed="true">All</button>
+                <button class="btn" data-filter="data-ml">Data / ML</button>
+                <button class="btn" data-filter="web">Web</button>
+                <button class="btn" data-filter="games">Games</button>
+                <button class="btn" data-filter="tools">Tools</button>
+            </div>
+            <div class="search">
+                <input id="search" type="search" placeholder="Search (e.g., iris, xgboost, fastapi)" aria-label="Search">
+            </div>
+            </div>
+
+            <div class="grid" id="cards">
+            <!-- EXAMPLE 1: Iris Classifier (live) -->
+            <article class="card" data-tags="data-ml iris sklearn fastapi" data-text="iris classifier flowers logistic regression fastapi demo" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🌸 Iris Classifier</h3>
+                <p>Predict the iris flower class (setosa/versicolor/virginica) from measurements.</p>
+                <div class="tags">
+                <span class="tag">FastAPI</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Log Reg</span>
+                </div>
+                <div class="actions">
+                <a class="link primary" href="./portfolio-iris.html">View demo</a>
+                <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                </div>
+            </article>
+
+            <!-- EXAMPLE 2: (placeholder) House Price Estimator -->
+            <article class="card" data-tags="data-ml regression xgboost" data-text="house price regression xgboost features demo" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🏡 House Price Estimator</h3>
+                <p>Estimate a house price from a few variables (area, bedrooms, ...).</p>
+                <div class="tags">
+                <span class="tag">XGBoost</span>
+                <span class="tag">Pydantic</span>
+                <span class="tag">FastAPI</span>
+                </div>
+                <div class="actions">
+                <a class="link primary" href="./portfolio-house.html">View demo</a>
+                <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                </div>
+            </article>
+
+            <!-- EXAMPLE 3: (new) Wine Quality Estimator -->
+            <article class="card" data-tags="data-ml regression gbregressor" data-text="wine quality regression gbregressor features demo" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🍷 Wine Quality Estimator</h3>
+                <p>Estimate a red wine quality from a few chemical properties.</p>
+                <div class="tags">
+                    <span class="tag">scikit-learn</span>
+                    <span class="tag">GBRegressor</span>
+                    <span class="tag">FastAPI</span>
+                </div>
+                <div class="actions">
+                    <a class="link primary" href="./portfolio-wine.html">View demo</a>
+                    <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a>
+                </div>
+            </article>  
+            
+            <!-- EXAMPLE 4: This website -->
+            <article class="card" data-tags="web" data-text="web demo python" tabindex="0">
+                <span class="pill">Live</span>
+                <h3>🛜 This website</h3>
+                <p>This website is maintained by me, built step by step, from scratch.</p>
+                <div class="tags">
+                    <span class="tag">web</span>
+                    <span class="tag">python</span>
+                    <span class="tag">javascript</span>
+                </div>
+                <div class="actions">
+                    <!-- <a class="link primary" href="./portfolio-wine.html">View demo</a>
+                    <a class="link" href="https://github.com/ian-geee/ml-api" target="_blank" rel="noopener">Code</a> -->
+                </div>
+            </article>  
+        </div>    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/includes-manager.js"></script>
+    <script src="src/js/background-switcher.js"></script> <!-- A exécuter après l'insertion des backgrounds :dumb_face: -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="src/js/short-radar.js"></script>
+    <script src="src/js/portfolio-searchbar.js"></script>
+
+</body>
+</html>
